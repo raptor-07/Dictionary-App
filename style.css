@@ -1,0 +1,8 @@
+.off{
+    display: none;
+    transition: all 3s ease;   
+}
+
+a{
+    cursor: pointer;
+}
