@@ -72,9 +72,10 @@ function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
             synonym = '-';
         }
         meaningsHtml += 
-        `<section class="meanings__block">
+        `<hr class="">
+        <section class="meanings__block">
         <p class="boldHead inlineClass">${element.partOfSpeech}</p>
-        <hr class="inlineBlockClass">
+        
         <p class="greyText">
         Meaning
             <ul class="content">

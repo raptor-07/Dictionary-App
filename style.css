@@ -204,6 +204,7 @@ hr{
     min-width: 15rem;
 }
 .synonymLink{
+    color: var(--dark-purple);
     text-decoration: none;
 }
 .purpleText--bold{
@@ -256,4 +257,5 @@ hr{
     .secondaryP{
         font-size: 1.4rem;
     }
+    
 }
