@@ -58,7 +58,7 @@ function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
     let titleHtml = 
     `<h2 class="title__word">${word}</h2>
     <p class="purpleText--phonetic">${phonetic}</p>
-    <img src="/assests/images/icon-play.svg" alt="" class="audioClicker">
+    <img src="assests/icon-play.svg" alt="" class="audioClicker">
     <audio class="audioButton">
     <source src="${audioUrl1}" type="audio/mpeg">
     <source src="${audioUrl2}" type="audio/mpeg">
