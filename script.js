@@ -15,8 +15,13 @@ fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
 
 function extractData(valueData){
     console.log(valueData);
-
-    injectData(valueData.word, valueData.phonetic, valueData.phonetics, valueData.meanings, valueData.sourceUrls);
+    try{
+        injectData(valueData.word, valueData.phonetic, valueData.phonetics, valueData.meanings, valueData.sourceUrls);
+    }
+    catch{
+        console.error('no value');
+    }
+    
 }
 
 function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
@@ -51,7 +56,7 @@ function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
         audioUrl2 = ''
     }
     let titleHtml = 
-    `<h2 class="title_word">${word}</h2>
+    `<h2 class="title__word">${word}</h2>
     <p class="purpleText--phonetic">${phonetic}</p>
     <img src="/assests/images/icon-play.svg" alt="" class="audioClicker">
     <audio class="audioButton">
@@ -67,17 +72,19 @@ function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
             synonym = '-';
         }
         meaningsHtml += 
-        `<section class="${element.partOfSpeech}">
-        <p class="boldHead">${element.partOfSpeech}</p>
+        `<section class="meanings__block">
+        <p class="boldHead inlineClass">${element.partOfSpeech}</p>
+        <hr class="inlineBlockClass">
         <p class="greyText">
-            <ul>
+        Meaning
+            <ul class="content">
                 <li>
                     <p>${element.definitions[0].definition}</p>
                 </li>
             </ul>
         </p>
         <p class="greyText inlineClass">
-        ${'Synonyms'}
+        Synonyms
 
             <a class="synonymLink purpleText--bold"
               href="#" style="cursor: pointer;">
@@ -92,7 +99,8 @@ function injectData(word, phonetic,  phonetics, meanings, sourceUrl){
     sourceUrl = sourceUrl[0];
     sourceUrl = sourceUrl.replace(/"/g,'');
     let sourceHtml =
-    `<p class="greyText">${'sources: '}<a href="" class="sourceLInk"></a>${sourceUrl}</p>`
+    `<hr>
+    <p class="greyText purpleText--bold underlineText">${'sources: '}<a href="${sourceUrl}" class="sourceLink">${sourceUrl}</a></p>`
     ;
 
     //inject html through DOM
@@ -119,19 +127,60 @@ function attachEventListers(){
             })
         }
     });
+    //event listener for drop down menu
 }
 
-const searchOnClick = document.querySelector('.searchInput');
 
 function resetPage(){
     
     document.querySelector('.title').innerHTML = '';
     document.querySelector('.meanings').innerHTML = '';
     document.querySelector('.source').innerHTML = '';
-
+    
     document.querySelector('.default').classList.add('off');
-
+    
 }
+function changeTypeface(){
+    const currentTf = document.querySelector('.header__typeFace__button').children[0].innerHTML;
+    document.documentElement.style.setProperty('font-family', `Noto ${currentTf}, ${currentTf}`);
+}
+//event listener for drop down menu
+document.querySelector('.header__typeFace__button').addEventListener('click', function(){
+    document.querySelector('.header__typeFace__DDM__button').classList.toggle('openMenu');
+    changeTypeface();
+});
+document.querySelector('.header__typeFace__DDM__button').addEventListener('click', function (){
+    document.querySelector('.header__typeFace__DDM__button').classList.toggle('openMenu');
+    [document.querySelector('.header__typeFace__button').children[0].innerHTML, document.querySelector('.header__typeFace__DDM__button').children[1].innerHTML] = [ document.querySelector('.header__typeFace__DDM__button').children[1].innerHTML, document.querySelector('.header__typeFace__button').children[0].innerHTML];
+    changeTypeface();
+});
+
+//event listeners for toggle
+document.querySelector('.toggleButton').addEventListener('click', function (){
+    document.querySelector('.toggleButton__slider').classList.toggle('toggleButton-on');
+    if(document.querySelector('.toggleButton__slider').classList.contains('toggleButton-on')){
+        document.querySelector('.toggleButton').style.backgroundColor = 'var(--dark-purple)';
+        document.documentElement.style.setProperty('background-color', 'var(--blackish)');
+        document.documentElement.style.setProperty('--font-color', 'var(--whitish)');
+    }
+    else{
+        document.querySelector('.toggleButton').style.backgroundColor = 'var(--dark-grey)';
+        document.documentElement.style.setProperty('background-color', 'var(--whitish)');
+        document.documentElement.style.setProperty('--font-color', 'var(--dark-grey)');
+    }
+    
+});
+
+
+
+const searchOnClick = document.querySelector('.searchInput');
+
+document.querySelector('.searchBar').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      searchOnClick.click();
+    }
+});
+
 searchOnClick.addEventListener('click', function (e){
         const searchWord = document.querySelector('.searchBar').value;
 

@@ -11,18 +11,29 @@
     <section class="main">
         <div class="staticContainer">
             <div class="header">
-                <div class="header_logo">
-                   <img src="/assests/images/logo.svg" alt="" srcset="" width="3%"> 
-                </div>
-                <div class="header_typeFace">
-                    <button class="header_typeFace_button">Sans Serif</button>
-                    <div class="header_typeFace_DDM openMenu">
-                        <button class="header_typeFaceDDM_button">Serif</button>
+                <a href="#" class="header__logo">
+                   <img src="/assests/images/logo.svg" alt="" srcset=""> 
+                </a>
+                <div class="header__typeFace">
+                    <button class="header__typeFace__button">
+                        <p class="primaryP inlineClass">Serif</p>
+                        <img src="/assests/images/icon-arrow-down.svg" alt="" srcset="" width="12px">
+                    </button>
+                    
+                    <div class="header__typeFace__DDM">
+                        
+                        <button class="header__typeFace__DDM__button">
+                            <hr>
+                            <p class="secondaryP inlineClass">Sans</p></button>
                     </div>
                 </div>
-                <div class="toggleButton">
-                    <span class="slider"></span>
-                    <input type="checkbox" class="checkbox">
+                <div class="toggleContainer">
+                    <div class="toggleButton">
+                        <div class="toggleButton__slider">
+                        </div>
+                        
+                    </div>
+                    <img src="/assests/images/icon-moon.svg" alt="" class="moon">
                 </div>
             </div>
             <input type="text" class="searchBar" placeholder="Enter the word to find the definition.">
