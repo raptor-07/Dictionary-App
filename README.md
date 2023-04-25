@@ -1,12 +1,12 @@
 # Dictionary-App 💻
-You can view this build on https://hurmaan-ahmed-7.github.io/Dictionary-App/
+You can view this build on https://raptor-07.github.io/Dictionary-App/
 <br><br>
 <ul><b>NOTE</b>
     <li>build works perfectly on firefox, however may have inconsistencies on other browser becuase it is not cross-browser compatible yet!</li>
 </ul>
 <ul><b>ABOUT</b>
     <li>
-        This project uses a third party API named [Free dictionary API](https://dictionaryapi.dev/) to display meanings of the word taken as input using the input field.
+        This project uses a third party API named [FreedictionaryAPI](https://dictionaryapi.dev/) to display meanings of the word taken as input using the input field.
     </li>
     <li>
         Audio button is added to listen to pronunciation of the word. Audio tag and DOM was used to implement the same.
